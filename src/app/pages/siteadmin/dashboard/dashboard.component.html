@@ -1,0 +1,41 @@
+
+<div class="container-fluid mb-4">
+
+
+    <div class="col-12">
+        <div class="card">
+            <div class="col-12 mt-2 mb-2">
+                <h2>Sell against stock</h2>
+                <hr>
+            </div>
+            <p-chart type="bar" [data]="barchart_data"></p-chart>
+        </div>
+    </div>
+
+    <div class="col-12">
+    <div class="row">
+        <div class="col-6 mt-3">
+            <div class="card">
+                <div class="col-12 mt-2 mb-2">
+                    <h2>Monthly Orders</h2>
+                    <hr>
+                </div>
+                <p-chart type="pie" [data]="pie_data"></p-chart>
+            </div>
+        </div>
+    
+        <div class="col-6 mt-3">
+            <div class="card">
+                <div class="col-12 mt-2 mb-2">
+                    <h2>Monthly Sell and Purchase</h2>
+                    <hr>
+                </div>
+                <p-chart type="line" [data]="data" (onDataSelect)="selectData($event)"></p-chart>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+
+   
+</div>
