@@ -149,7 +149,7 @@ const MENUITEMS_siteadmin = [
         type: 'link',
         icon: 'assignment',
 	  },
-	  {
+	  /* {
         main_state: 'siteadmin',
         state: 'goods_reciept',
         name: 'Orders Distribution',
@@ -162,7 +162,7 @@ const MENUITEMS_siteadmin = [
         name: 'Customers Feedback',
         type: 'link',
         icon: 'feedback',
-	  },
+	  }, */
     ],
   },
 
