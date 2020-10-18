@@ -108,4 +108,11 @@ export class MastersService {
 							return data;
 					}));
   }
+
+  SignOut():Observable<any>
+  {
+    return this.httpClient.get<any>(environment.endpoint_url+'/api/SignOut/').pipe(map(data => {
+      return data;
+    }));
+  }
 }

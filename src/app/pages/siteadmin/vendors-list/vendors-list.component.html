@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="col-12">
         <button mat-raised-button color="primary" [routerLink]="['/', 'siteadmin', 'vendor_details',0]">Add New</button>&nbsp;
-        <button mat-raised-button *ngIf="selectedRows && selectedRows.length == 1" color="primary" [routerLink]="['/', 'siteadmin', 'vendor_details',vendorid]">Edit Location</button>&nbsp;
+        <button mat-raised-button *ngIf="selectedRows && selectedRows.length == 1" color="primary" [routerLink]="['/', 'siteadmin', 'vendor_details',vendorid]">Edit Vendor</button>&nbsp;
        <!--  <button mat-raised-button *ngIf="selectedRows && selectedRows.length >= 1" color="primary" (click)="deleteCompanies()">Delete user(s)</button> -->
     </div>
     <div class="col-12 mt-2">

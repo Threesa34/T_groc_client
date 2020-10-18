@@ -2,7 +2,8 @@
 
 <mat-toolbar class="mt-3" *ngFor="let breadcrumb of breadcrumbs; let last = last" [hidden]="!last">
     <mat-toolbar-row *ngIf="breadcrumb.status && last">
-      <span>{{ breadcrumb.label }}</span>
+      <span class="material-icons">{{ breadcrumb.icon }}</span> &nbsp;
+      <span >{{ breadcrumb.label }}</span>
       <span class="example-spacer"></span>
       <ul class="breadcrumb">
         <li class="breadcrumb-item">

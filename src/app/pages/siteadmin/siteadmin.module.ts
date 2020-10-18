@@ -11,10 +11,10 @@ import { UsersListComponent } from './users-list/users-list.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { LocationsListComponent } from './locations-list/locations-list.component';
 import { LocationDetailsComponent } from './location-details/location-details.component';
-import { ProductsListComponent, ProductDetails } from './products-list/products-list.component';
-import { CatagoriesListComponent, CatagoryDetails } from './catagories-list/catagories-list.component';
-import { ManufacturelsComponent,ManufacturelDetails } from './manufacturels/manufacturels.component';
-import { ProductUnitsListComponent } from './product-units-list/product-units-list.component';
+import { ProductsListComponent, ProductDetails, UploadProductsDetails } from './products-list/products-list.component';
+import { CatagoriesListComponent, CatagoryDetails, UploadCatagoriesDetails } from './catagories-list/catagories-list.component';
+import { ManufacturelsComponent,ManufacturelDetails, UploadManufacturelDetails } from './manufacturels/manufacturels.component';
+import { ProductUnitsListComponent, UploadProductUnitsDetails, UploadProductUnitsImages } from './product-units-list/product-units-list.component';
 import { ProductUnitDetailsComponent } from './product-unit-details/product-unit-details.component';
 import { StockPointsComponent, StockPointDetails } from './stock-points/stock-points.component';
 import {ChartModule} from 'primeng/chart';
@@ -28,9 +28,13 @@ import { GoodsListComponent } from './goods-list/goods-list.component';
 import { GoodsDetailsComponent } from './goods-details/goods-details.component';
 import { CustomersFeedbackComponent } from './customers-feedback/customers-feedback.component';
 import { GoodsEntryComponent } from './goods-entry/goods-entry.component';
+import { MegaPacksComponent } from './mega-packs/mega-packs.component';
+import { MegaPacksDetailsComponent } from './mega-packs-details/mega-packs-details.component';
+
+import { SearchPipe } from '../../helper/search.pipe';
 
 @NgModule({
-  declarations: [ImagePreview, DashboardComponent, UsersListComponent, UserDetailsComponent, LocationsListComponent, LocationDetailsComponent, ProductsListComponent, ProductDetails, CatagoriesListComponent, CatagoryDetails, ManufacturelsComponent, ManufacturelDetails, ProductUnitsListComponent, ProductUnitDetailsComponent, StockPointsComponent, StockPointDetails, OffersListComponent, OffersDetailsComponent, VendorsListComponent, VendorDetailsComponent, PurchaseListComponent, PurchaseDetailsComponent, GoodsListComponent, GoodsDetailsComponent, CustomersFeedbackComponent, GoodsEntryComponent],
+  declarations: [ImagePreview, DashboardComponent, UsersListComponent, UserDetailsComponent, LocationsListComponent, LocationDetailsComponent, ProductsListComponent, ProductDetails, UploadProductsDetails, CatagoriesListComponent, CatagoryDetails, UploadCatagoriesDetails, ManufacturelsComponent, ManufacturelDetails, UploadManufacturelDetails, ProductUnitsListComponent, UploadProductUnitsDetails, UploadProductUnitsImages, ProductUnitDetailsComponent, StockPointsComponent, StockPointDetails, OffersListComponent, OffersDetailsComponent, VendorsListComponent, VendorDetailsComponent, PurchaseListComponent, PurchaseDetailsComponent, GoodsListComponent, GoodsDetailsComponent, CustomersFeedbackComponent, GoodsEntryComponent, MegaPacksComponent, MegaPacksDetailsComponent, SearchPipe],
   imports: [
     CommonModule,
     SiteadminRoutingModule,

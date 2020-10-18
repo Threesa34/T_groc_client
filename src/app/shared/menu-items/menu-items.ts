@@ -137,6 +137,13 @@ const MENUITEMS_siteadmin = [
 	  },
 	  {
         main_state: 'siteadmin',
+        state: 'megapacks',
+        name: 'Mega Packs',
+        type: 'link',
+        icon: 'shopping_basket',
+	  },
+	  {
+        main_state: 'siteadmin',
         state: 'purchase',
         name: 'Purchase Order',
         type: 'link',

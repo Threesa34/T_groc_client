@@ -10,12 +10,17 @@ $amber-primary: mat-palette($mat-amber);
 $amber-accent:  mat-palette($mat-amber, A200, A100, A400);
 $amber-warn: mat-palette($mat-red);
 $amber-theme: mat-light-theme($amber-primary, $amber-accent, $amber-warn);
+$amber-dark-theme: mat-dark-theme($amber-primary, $amber-accent, $amber-warn);
 $amber-background: map-get($amber-theme, background);
 $amber-foreground: map-get($amber-theme, foreground);
 // AMBER THEME-----------------------------------------
 $config: mat-typography-config();
 
 @include angular-material-theme($amber-theme);
+
+.darkMode {
+  @include angular-material-color($amber-dark-theme);
+}
 
 
 $bi-app-left 				    : left;

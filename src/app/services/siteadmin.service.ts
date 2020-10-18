@@ -91,6 +91,13 @@ export class SiteadminService {
   }));
   }
 
+  UploadManufacturalData(manufacturelDetails):Observable<any>
+  {
+    return this.httpClient.post(environment.endpoint_url+'/api/UploadManufacturalData/',manufacturelDetails).pipe(map(data => {
+      return data;
+  }));
+  }
+
   // CATAGORY
 
   getCatagoriesList():Observable<any>
@@ -122,6 +129,53 @@ export class SiteadminService {
   }));
   }
 
+  UploadCatagoriesData(catagoryDetails):Observable<any>
+  {
+    return this.httpClient.post(environment.endpoint_url+'/api/UploadCatagoriesData/',catagoryDetails).pipe(map(data => {
+      return data;
+  }));
+  }
+
+
+  // MEGAPACKS
+
+  getMegapacksList():Observable<any>
+  {
+    return this.httpClient.get<any>(environment.endpoint_url+'/api/getMegapacksList/').pipe(map(data => {
+      return data;
+    }));
+  }
+
+
+  getprodctUnits():Observable<any>
+  {
+    return this.httpClient.get<any>(environment.endpoint_url+'/api/getprodctUnits/').pipe(map(data => {
+      return data;
+    }));
+  }
+
+
+  getMegapackProductDetails(id):Observable<any>
+  {
+    return this.httpClient.get<any>(environment.endpoint_url+'/api/getMegapackProductDetails/'+id).pipe(map(data => {
+      return data;
+    }));
+  }
+
+  getMegapackDetails(id):Observable<any>
+  {
+    return this.httpClient.get<any>(environment.endpoint_url+'/api/getMegapackDetails/'+id).pipe(map(data => {
+      return data;
+    }));
+  }
+
+  saveMegapackDetails(CatagoryDetails):Observable<any>
+  {
+    return this.httpClient.post(environment.endpoint_url+'/api/saveMegapackDetails/',CatagoryDetails).pipe(map(data => {
+      return data;
+  }));
+  }
+
 
   // PRODUCTS
 
@@ -147,9 +201,24 @@ export class SiteadminService {
     this.invokeProductsList.emit();
   }
 
+  invokeProductUnitsList = new EventEmitter();    
+  subsProductUnitsList: Subscription;  
+
+  EmitProductUnitsList(){
+    this.invokeProductUnitsList.emit();
+  }
+
   saveProductDetails(CatagoryDetails):Observable<any>
   {
     return this.httpClient.post(environment.endpoint_url+'/api/saveProductDetails/',CatagoryDetails).pipe(map(data => {
+      return data;
+  }));
+  }
+
+  
+  UploadProductsData(productsDetails):Observable<any>
+  {
+    return this.httpClient.post(environment.endpoint_url+'/api/UploadProductsData/',productsDetails).pipe(map(data => {
       return data;
   }));
   }
@@ -198,6 +267,25 @@ export class SiteadminService {
       return data;
   }));
   }
+
+    
+  uploadProductUnitsImages(unitImages):Observable<any>
+  {
+    return this.httpClient.post(environment.endpoint_url+'/api/uploadProductUnitsImages/',unitImages, {
+      reportProgress: true,
+      observe: 'events'
+    }).pipe(map(data => {
+      return data;
+  }));
+  }
+
+  UploadProductUnitsData(productsDetails):Observable<any>
+  {
+    return this.httpClient.post(environment.endpoint_url+'/api/UploadProductUnitsData/',productsDetails).pipe(map(data => {
+      return data;
+  }));
+  }
+
 
   // STOCK POINTS
 

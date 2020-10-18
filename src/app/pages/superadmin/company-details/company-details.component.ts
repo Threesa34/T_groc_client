@@ -20,7 +20,10 @@ export class CompanyDetailsComponent implements OnInit {
   countriesList:any;
   statesList:any;
   citiesList:any;
-
+  _statusOptions:any = [
+    {id:1, title:'Active'},
+    {id:0, title:'Deactive'},
+    ];
   logo:any;
   public uploader: FileUploader = new FileUploader({
     isHTML5: true

@@ -22,6 +22,8 @@ import { GoodsListComponent } from './goods-list/goods-list.component';
 import { GoodsDetailsComponent } from './goods-details/goods-details.component';
 import { GoodsEntryComponent } from './goods-entry/goods-entry.component';
 import { CustomersFeedbackComponent } from './customers-feedback/customers-feedback.component';
+import { MegaPacksComponent } from './mega-packs/mega-packs.component';
+import { MegaPacksDetailsComponent } from './mega-packs-details/mega-packs-details.component';
 
 const routes: Routes = [
   {
@@ -42,7 +44,8 @@ const routes: Routes = [
         component: DashboardComponent,
         data: {
           breadcrumb: 'Dashboard',
-          status: true
+          status: true,
+          icon: 'dashboard'
         },
       }, 
       {
@@ -50,7 +53,8 @@ const routes: Routes = [
         component: UsersListComponent,
         data: {
           breadcrumb: 'Employees',
-          status: true
+          status: true,
+          icon: 'people_alt'
         },
       }, 
       {
@@ -58,7 +62,8 @@ const routes: Routes = [
         component: UserDetailsComponent,
         data: {
           breadcrumb: 'Employee Details',
-          status: true
+          status: true,
+          icon: 'people_alt'
         },
       }, 
       {
@@ -66,7 +71,8 @@ const routes: Routes = [
         component: LocationsListComponent,
         data: {
           breadcrumb: 'Locations',
-          status: true
+          status: true,
+          icon: 'location_on'
         },
       }, 
       {
@@ -74,7 +80,8 @@ const routes: Routes = [
         component: LocationDetailsComponent,
         data: {
           breadcrumb: 'Location Details',
-          status: true
+          status: true,
+          icon: 'location_on'
         },
       }, 
       {
@@ -82,7 +89,8 @@ const routes: Routes = [
         component: ProductsListComponent,
         data: {
           breadcrumb: 'Products',
-          status: true
+          status: true,
+          icon: 'list'
         },
       }, 
       {
@@ -90,7 +98,8 @@ const routes: Routes = [
         component: CatagoriesListComponent,
         data: {
           breadcrumb: 'Catagories',
-          status: true
+          status: true,
+          icon: 'category'
         },
       }, 
       {
@@ -98,7 +107,8 @@ const routes: Routes = [
         component: ManufacturelsComponent,
         data: {
           breadcrumb: 'Manufacturals',
-          status: true
+          status: true,
+          icon: 'store'
         },
       }, 
       {
@@ -106,7 +116,8 @@ const routes: Routes = [
         component: ProductUnitsListComponent,
         data: {
           breadcrumb: 'Product Units',
-          status: true
+          status: true,
+          icon: 'list'
         },
       }, 
       {
@@ -114,7 +125,8 @@ const routes: Routes = [
         component: ProductUnitDetailsComponent,
         data: {
           breadcrumb: 'Product Unit Details',
-          status: true
+          status: true,
+          icon: 'list'
         },
       }, 
       {
@@ -122,7 +134,8 @@ const routes: Routes = [
         component: StockPointsComponent,
         data: {
           breadcrumb: 'Stock Point',
-          status: true
+          status: true,
+          icon: 'domain'
         },
       }, 
       {
@@ -130,7 +143,8 @@ const routes: Routes = [
         component: VendorsListComponent,
         data: {
           breadcrumb: 'Vendors',
-          status: true
+          status: true,
+          icon: 'store'
         },
       }, 
       {
@@ -138,7 +152,8 @@ const routes: Routes = [
         component: VendorDetailsComponent,
         data: {
           breadcrumb: 'Vendor Details',
-          status: true
+          status: true,
+          icon: 'store'
         },
       }, 
       {
@@ -146,7 +161,8 @@ const routes: Routes = [
         component: OffersListComponent,
         data: {
           breadcrumb: 'Offers',
-          status: true
+          status: true,
+          icon: 'loyalty'
         },
       }, 
       {
@@ -154,7 +170,26 @@ const routes: Routes = [
         component: OffersDetailsComponent,
         data: {
           breadcrumb: 'Offer Details',
-          status: true
+          status: true,
+          icon: 'loyalty'
+        },
+      }, 
+      {
+        path: 'megapacks',
+        component: MegaPacksComponent,
+        data: {
+          breadcrumb: 'Mega Packs',
+          status: true,
+          icon: 'shopping_basket'
+        },
+      }, 
+      {
+        path: 'megapack_details/:id',
+        component: MegaPacksDetailsComponent,
+        data: {
+          breadcrumb: 'Mega Pack Details',
+          status: true,
+          icon: 'shopping_basket'
         },
       }, 
       {
@@ -162,7 +197,8 @@ const routes: Routes = [
         component: PurchaseListComponent,
         data: {
           breadcrumb: 'Purchase Orders',
-          status: true
+          status: true,
+          icon: 'assignment'
         },
       }, 
       {
@@ -170,7 +206,8 @@ const routes: Routes = [
         component: PurchaseDetailsComponent,
         data: {
           breadcrumb: 'Purchase Details',
-          status: true
+          status: true,
+          icon: 'assignment'
         },
       }, 
       {
@@ -178,7 +215,8 @@ const routes: Routes = [
         component: GoodsListComponent,
         data: {
           breadcrumb: 'Goods Reciept',
-          status: true
+          status: true,
+          icon: 'assignment'
         },
       }, 
       {
@@ -186,7 +224,8 @@ const routes: Routes = [
         component: GoodsDetailsComponent,
         data: {
           breadcrumb: 'Goods Reciept Details',
-          status: true
+          status: true,
+          icon: 'assignment'
         },
       }, 
       {
@@ -194,7 +233,8 @@ const routes: Routes = [
         component: GoodsEntryComponent,
         data: {
           breadcrumb: 'Goods Reciept Entry',
-          status: true
+          status: true,
+          icon: 'assignment'
         },
       }, 
       {
@@ -202,7 +242,8 @@ const routes: Routes = [
         component: CustomersFeedbackComponent,
         data: {
           breadcrumb: 'Customers Feedback/Complaints',
-          status: true
+          status: true,
+          icon: 'feedback'
         },
       }, 
      

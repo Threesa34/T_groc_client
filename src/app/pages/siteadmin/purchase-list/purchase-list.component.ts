@@ -157,8 +157,10 @@ export class PurchaseListComponent implements OnInit {
  }
 
  enableGrEntry:boolean = false;
- verifyGoodsEntryExist(poid)
+ verifyGoodsEntryExist(poid, selectedObject)
  {
+   if(selectedObject[0].status == 1)
+   {
    this._SiteadminService.verifyGoodsEntryExist(poid).subscribe((res:any)=>{
      if(!res.status)
    {
@@ -172,6 +174,10 @@ export class PurchaseListComponent implements OnInit {
     }
    }
    });
+  }else
+  {
+    this.enableGrEntry = false;
+  }
  }
 
  onPageSizeChanged(newageSize) {
@@ -189,8 +195,11 @@ export class PurchaseListComponent implements OnInit {
      }
      selectedRowsString += selectedRow.athlete;
    });
-   this.purchaseid = this.selectedRows[0].id;
-   this.verifyGoodsEntryExist(this.purchaseid);
+   if(this.selectedRows.length > 0)
+   {
+     this.purchaseid = this.selectedRows[0].id;
+     this.verifyGoodsEntryExist(this.purchaseid, this.selectedRows);
+   }
  }
 
 

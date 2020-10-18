@@ -1,7 +1,9 @@
 <div class="container-fluid">
     <div class="col-12">
         <button mat-raised-button color="primary" [routerLink]="['/', 'siteadmin', 'product_units_details',0]">Add New</button>&nbsp;
-        <button mat-raised-button *ngIf="selectedRows && selectedRows.length == 1" color="primary" [routerLink]="['/', 'siteadmin', 'product_units_details',prd_unit_id]">Edit Location</button>&nbsp;
+        <button mat-raised-button color="primary" (click)="openUploadDialog()">Upload Product Units</button>&nbsp;
+        <button mat-raised-button color="primary" (click)="openUploadImagesDialog()">Upload Product Units Images</button>&nbsp;
+        <button mat-raised-button *ngIf="selectedRows && selectedRows.length == 1" color="primary" [routerLink]="['/', 'siteadmin', 'product_units_details',prd_unit_id]">Edit Unit</button>&nbsp;
        <!--  <button mat-raised-button *ngIf="selectedRows && selectedRows.length >= 1" color="primary" (click)="deleteProductUnit()">Deactivate Product Unit(s)</button> -->
     </div>
     <div class="col-12 mt-2">

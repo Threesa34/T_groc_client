@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SiteadminService } from '../../../services/siteadmin.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import Swal from 'sweetalert2';
+import {  FileUploader } from 'ng2-file-upload';
+import * as XLSX from 'xlsx';
 
 const deleteConfirm = {
   title: 'Are you sure?',
@@ -71,7 +73,69 @@ export class CatagoryDetails implements OnInit{
 
 }
 
+@Component({
+  selector: 'upload-catagories-details',
+  templateUrl: 'upload-catagories.html',
+})
+export class UploadCatagoriesDetails implements OnInit{
+  
 
+  constructor(private _SiteadminService : SiteadminService){}
+
+  sheets:any;
+  uploadData :any = {};
+  
+  public uploader: FileUploader = new FileUploader({
+    isHTML5: true
+  });
+
+  ngOnInit(): void {}
+
+  onFileChange(ev) {
+    let workBook = null;
+    let jsonData = null;
+    const reader = new FileReader();
+    const file = ev.target.files[0];
+    reader.onload = (event) => {
+      const data = reader.result;
+      workBook = XLSX.read(data, { type: 'binary' });
+      jsonData = workBook.SheetNames.reduce((initial, name) => {
+        const sheet = workBook.Sheets[name];
+       
+        initial[name] = XLSX.utils.sheet_to_json(sheet);
+        return initial;
+      }, {});
+    this.sheets = Object.keys(jsonData);
+    this.uploadData.seletedSheet = this.sheets[0];
+    }
+    reader.readAsBinaryString(file);
+  }
+
+  UploadExcelData()
+  {
+    let data = new FormData();
+    if (this.uploader.queue.length > 0) {
+      this.uploader.queue.map((value, index)=>{
+        data.append('file'+index, value._file);
+      });
+    }
+    data.append('sheetname', this.uploadData.seletedSheet);
+    this._SiteadminService.UploadCatagoriesData(data).subscribe((res: any) => {
+      var resAlert ={
+       title: res.title,
+       text: res.message,
+       type: res.type,
+     }
+      Swal.fire(resAlert).then((result) => {
+       if (res.status === 1) {
+        this._SiteadminService.EmitCatagoriesList();
+       } else {
+       }
+     }); 
+   });
+  }
+
+}
 
 
 @Component({
@@ -121,6 +185,15 @@ export class CatagoriesListComponent implements OnInit {
        field: 'name',
        type: 'text',
        checkboxSelection: true,
+       filterParams: {
+         resetButton: true,
+         suppressAndOrCondition: true,
+       },
+     },
+     {
+       headerName: "Description", 
+       field: 'description',
+       type: 'text',
        filterParams: {
          resetButton: true,
          suppressAndOrCondition: true,
@@ -209,6 +282,16 @@ openDialog(type){
     console.log(`Dialog result: ${result}`);
   });
 }
+
+openUploadDialog(){
+
+  var dialogRef = this.dialog.open(UploadCatagoriesDetails,{data:0});
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log(`Dialog result: ${result}`);
+  });
+}
+
 
 
 }

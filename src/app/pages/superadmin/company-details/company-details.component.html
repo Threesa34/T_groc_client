@@ -95,6 +95,12 @@
         <mat-label>GSTIN</mat-label>
         <input matInput [(ngModel)]="companyDetails.gstin">
     </mat-form-field>
+    <mat-form-field class="col-12 col-lg-4 col-md-12 col-sm-12">
+        <mat-label>Status</mat-label>
+           <mat-select [(ngModel)]="companyDetails.status">
+            <mat-option *ngFor="let _obj of _statusOptions" [value]="_obj.id">{{_obj.title}}</mat-option>
+        </mat-select>
+      </mat-form-field>
 <!-- </form> -->
         </div>    
 

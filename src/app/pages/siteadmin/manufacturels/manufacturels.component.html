@@ -1,7 +1,8 @@
 <div class="container-fluid">
     <div class="col-12">
         <button mat-raised-button color="primary" (click)="openDialog('new')">Add New</button>&nbsp;
-        <button mat-raised-button color="primary" *ngIf="selectedRows && selectedRows.length == 1" (click)="openDialog('edit')">Edit Location</button>&nbsp;
+        <button mat-raised-button color="primary" (click)="openUploadDialog()">Upload Manufacturals</button>&nbsp;
+        <button mat-raised-button color="primary" *ngIf="selectedRows && selectedRows.length == 1" (click)="openDialog('edit')">Edit Manufactural</button>&nbsp;
        <!--  <button mat-raised-button *ngIf="selectedRows && selectedRows.length >= 1" color="primary" (click)="deleteCompanies()">Delete user(s)</button> -->
     </div>
     <div class="col-12 mt-2">

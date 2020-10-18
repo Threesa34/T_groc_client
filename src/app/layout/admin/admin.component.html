@@ -5,21 +5,21 @@
     <span>My App</span>
     <span class="example-spacer"></span>
     
+    <a mat-icon-button (click)="sidenav1.toggle()">
+      <mat-icon matBadge="15" matBadgeColor="warn">mail</mat-icon>
+    </a>
+&nbsp;
     <a mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
       <mat-icon>account_circle</mat-icon>
     </a>
     <mat-menu #menu="matMenu">
       <a mat-menu-item>
-        <mat-icon>dialpad</mat-icon>
-        <span>Redial</span>
+        <mat-icon>account_circle</mat-icon>
+        <span>Profile</span>
       </a>
-      <a mat-menu-item>
-        <mat-icon>voicemail</mat-icon>
-        <span>Check voice mail</span>
-      </a>
-      <a mat-menu-item>
-        <mat-icon>notifications_off</mat-icon>
-        <span>Disable alerts</span>
+      <a mat-menu-item (click)="SignOut()">
+        <mat-icon>login</mat-icon>
+        <span>Signout</span>
       </a>
     </mat-menu>
   </mat-toolbar>
@@ -58,6 +58,22 @@
       </mat-nav-list>
     </mat-sidenav>
 
+    <mat-sidenav #sidenav1 position="end" opened="false" mode="over" class="wrapper">
+      <div class="container-fluid mt-1">
+          <div class="row">
+            <table class="table table-borderless table-hover">
+              <tbody>
+              <tr *ngFor="let folder of folders">
+                <td><i class="fa fa-birthday-cake text-danger" aria-hidden="true"></i></td>
+                <td>{{folder.name}}</td>
+              </tr>
+            </tbody>
+            </table>
+          </div>
+      </div>
+    </mat-sidenav>
+
+
     <mat-sidenav-content>
 
 
@@ -70,11 +86,11 @@
           </router-outlet>
       </div>
       </div>
-
-      
     </mat-sidenav-content>
   </mat-sidenav-container>
-  
-
+<!-- <div class="mr-4 mb-4" style="position:fixed;right:0;bottom:0;z-index: 999;" *ngIf="!hideBtn">
+    <a mat-mini-fab color="primary" class="text-dark" (click)="hideBtn = !hideBtn; sidenavChatBot.toggle();"> <mat-icon>contact_support</mat-icon></a>
+  </div>
+  -->
 
   

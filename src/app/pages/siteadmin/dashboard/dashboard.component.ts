@@ -13,6 +13,14 @@ import {ChartModule} from 'primeng/chart';
 export class DashboardComponent implements OnInit {
 
   data: any;
+
+  count:any = {
+    products:4000,
+    locations:26,
+    product_units:12550,
+    orders:767
+  }
+
   constructor() { }
 
   ngOnInit(): void {
