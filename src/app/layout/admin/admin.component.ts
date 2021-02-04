@@ -9,6 +9,8 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 import { MastersService } from '../../services/masters.service';
 import Swal from 'sweetalert2';
 
+declare var H: any;
+
 export interface Section {
   name: string;
   updated: Date;
@@ -37,6 +39,9 @@ export class AdminComponent implements OnInit {
   toggleControl = new FormControl(false);
   @HostBinding('class') className = '';
   hideBtn:boolean;
+
+  private platform: any;
+  private service: any;
 
   folders: Section[] = [
     {
@@ -67,12 +72,21 @@ export class AdminComponent implements OnInit {
     this.userRole =  this.cookieService.get('role');
     this.userRole = this.userRole.toLocaleLowerCase();
 
-    this.menuList = this.menuItems.getMenusAgainstUserRol(this.userRole)
+    this.menuList = this.menuItems.getMenusAgainstUserRol(this.userRole);
+
+
+    
+    this.platform = new H.service.Platform({
+      "apikey": "STUm3K3RBB8Iw83LByhNvDt5eEeekrrvv8GVVIgxKaA"
+  });
+
+  this.service = this.platform.getSearchService();
+
    }
 
 
   ngOnInit(): void {
-    
+    this.getAttendanceStatus();
   }
 
   toggleSubMenu(_obj)
@@ -88,6 +102,103 @@ export class AdminComponent implements OnInit {
       else
       _obj.expanded = false;
     } 
+  }
+
+
+  SetAttendance()
+  {
+
+     this._MastersService.getPosition().then(pos=>
+      {
+
+        var time = new Date();
+        pos['time'] = time;
+        var attendanceDetails = {date: new Date()};
+
+        //  = item.address.label;
+
+        for(var i = 0; i < Object.keys(pos).length;i++)
+        {
+          attendanceDetails[Object.keys(pos)[i]] = pos[Object.keys(pos)[i]];
+        }
+  
+        this._MastersService.getAddress(pos).subscribe((res:any)=>{
+         attendanceDetails['address'] = res.Label+', '+res.PostalCode;
+         attendanceDetails['time'] = res.attendnace_time;
+         var resAlert ={
+          title: 'Address: '+attendanceDetails['address'],
+          html: '<div class="col-12"><p><b>Time: '+attendanceDetails['time']+'</b></p></div>',
+          type: "warning",
+          showConfirmButton: true,
+          showCancelButton: true,
+          confirmButtonText: 'Confirm',
+          cancelButtonText: "Refresh / Cancel",
+        }
+         Swal.fire(resAlert).then((result) => {
+          if (result.isConfirmed) {
+            this.submitAttendance(attendanceDetails);        // submitting the form when user press yes
+          } 
+          else {
+
+            var resAlert ={
+              title: 'Do you want to refresh the attendance details or cancel attendance request?',
+             
+              type: "warning",
+              showConfirmButton: true,
+              showCancelButton: true,
+              confirmButtonText: 'Refresh',
+              cancelButtonText: "Cancel",
+            }
+             Swal.fire(resAlert).then((result) => {
+              if (result.isConfirmed) {
+                this.SetAttendance();      // submitting the form when user press yes
+              } else {
+               
+              }
+              
+              // <div class="col-12"><button type="button" class="btn btn-primary" (click)="submitAttendance('+attendanceDetails+')">Submit</button>&nbsp;<button type="button" class="btn btn-primary">Refresh</button></div>
+              }); 
+          }
+          
+          // <div class="col-12"><button type="button" class="btn btn-primary" (click)="submitAttendance('+attendanceDetails+')">Submit</button>&nbsp;<button type="button" class="btn btn-primary">Refresh</button></div>
+          }); 
+        });
+
+
+       
+
+        // console.log(attendanceDetails)
+      }); 
+  }
+
+  submitAttendance(attendanceDetails)
+  {
+    this._MastersService.setAttendance(attendanceDetails).subscribe((res:any)=>{
+      if(res)
+      {
+        var resAlert ={
+          title: res.title,
+          text: res.message,
+          type: res.type,
+        }
+         Swal.fire(resAlert).then((result) => {
+          // this.router.navigate(['/']);
+          this.getAttendanceStatus();
+          }); 
+      }
+    });
+  }
+  
+  attendanceStatus:any;
+  getAttendanceStatus()
+  {
+    this._MastersService.getAttendanceStatus().subscribe((res:any)=>{
+      if(res)
+      {
+        console.log(res)
+        this.attendanceStatus = res.status;
+      }
+    });
   }
 
   SignOut()

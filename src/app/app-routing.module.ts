@@ -39,6 +39,26 @@ const routes: Routes = [
       },
     ]
   },
+  {
+    path: 'hr',
+    component: AdminComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./pages/hr/hr.module').then(m => m.HrModule)
+      },
+    ]
+  },
+  {
+    path: 'campaign',
+    component: AdminComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./pages/campaigns/campaigns.module').then(m => m.CampaignsModule)
+      },
+    ]
+  },
 ];
 
 @NgModule({

@@ -5,8 +5,12 @@
     <span>My App</span>
     <span class="example-spacer"></span>
     
+    <a mat-icon-button (click)="SetAttendance()" [ngClass]="{'text-success': attendanceStatus == 1, 'text-warning':attendanceStatus == 2}">
+      <mat-icon>radio_button_checked</mat-icon>
+    </a>
+&nbsp;
     <a mat-icon-button (click)="sidenav1.toggle()">
-      <mat-icon matBadge="15" matBadgeColor="warn">mail</mat-icon>
+      <mat-icon matBadge="15" matBadgeColor="accent">mail</mat-icon>
     </a>
 &nbsp;
     <a mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
@@ -48,7 +52,7 @@
                   </span>
                 </mat-list-item>
                 <mat-nav-list *ngIf="item.expanded">
-                     <mat-list-item *ngFor="let child of item.children" class="ml-4" [routerLink]="['/', item.main_state, item.state, child.state]" (click)="snav.toggle()">
+                     <mat-list-item *ngFor="let child of item.children" class="ml-4" [routerLink]="['/', item.state, child.state]" (click)="snav.toggle()">
                       <div mat-line>{{child.name}}</div>
                       </mat-list-item>  
                   </mat-nav-list>

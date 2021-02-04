@@ -41,13 +41,14 @@ export class LoginComponent implements OnInit {
           if(res.success == true)
           {
             this.cookieService.set('token', res.token );
-            this.cookieService.set('role', res.role );
+            this.cookieService.set('role', res.rolename );
+            this.cookieService.set('_id', res._id );
             if(res.firstlogin == 0)
             {
                 this._router.navigate(['/authentication/set_password']);
             }
             else{
-                this._router.navigate(['/'+res.role.toLowerCase()]);
+                this._router.navigate(['/'+res.rolename.toLowerCase()]);
             }
           }
         }

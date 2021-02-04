@@ -1,9 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MastersService } from '../../../services/masters.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import Swal from 'sweetalert2';
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import * as am4maps from "@amcharts/amcharts4/maps"
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 import {ChartModule} from 'primeng/chart';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +18,7 @@ import {ChartModule} from 'primeng/chart';
 export class DashboardComponent implements OnInit {
 
   data: any;
-
+  _id:any;
   count:any = {
     products:4000,
     locations:26,
@@ -21,13 +26,22 @@ export class DashboardComponent implements OnInit {
     orders:767
   }
 
-  constructor() { }
+  constructor(private _router : Router, private _MastersService : MastersService, private cookieService: CookieService,) { }
 
   ngOnInit(): void {
+
+    this._id = this.cookieService.get('_id');
+    this._MastersService
+      .getMessages()
+      .subscribe((message: string) => {
+        // this.messageList.push(message);
+      });
+
     this.LoadChart();
     this.loadPieChart();
     this.loadPieChart();
     this.LoadLineChart();
+    this.getUsersList();
   }
 
 
@@ -87,24 +101,83 @@ barchart_data: any;
   pie_data:any;
   loadPieChart()
   {
-    this.pie_data = {
-      labels: ['A','B','C'],
-      datasets: [
-          {
-              data: [300, 50, 100],
-              backgroundColor: [
-                  "#FF6384",
-                  "#36A2EB",
-                  "#FFCE56"
-              ],
-              hoverBackgroundColor: [
-                  "#FF6384",
-                  "#36A2EB",
-                  "#FFCE56"
-              ]
-          }]    
-      };
+
+    var loanData;
+    this._MastersService.getDashboardLoanData().subscribe((res:any)=>{
+      if(!res.status)
+    {
+      loanData = res;
+      this.pie_data = {
+        labels: ['Loan Requests','Loan Reciepts'],
+        datasets: [
+            {
+                data: loanData,
+                backgroundColor: [
+                    "#FF355E",
+                    "#87FF2A",
+                ],
+                hoverBackgroundColor: [
+                    "#FF355E",
+                    "#87FF2A",
+                ]
+            }]    
+        };
+    }
+    });
+
+
+    
   }
 
+  usersList:any;
+
+  getUsersList()
+  {
+    this._MastersService.getRestUsersList().subscribe((res:any)=>{
+        this.usersList = res;
+    });
+  }
+
+  showChatBox:boolean;
+  selectedUser:any;
+  chatLogDetails:any;
+  getChat(data)
+  {
+      this.selectedUser = data;
+      this.showChatBox = true;
+
+      this._MastersService.getChatLog(data.id).subscribe((res:any)=>{
+        this.chatLogDetails = res;
+    });
+  }
+
+
+  showImage(imgfile)
+  {
+
+    var resAlert ={
+      imageUrl: 'http://192.168.0.100:8895/uploads/employee/'+imgfile,
+        imageWidth: 400,
+        imageHeight: 400,
+        animation: true,
+      showCancelButton: false,
+    showConfirmButton: false
+    }
+     Swal.fire(resAlert).then((result) => {
+     
+    });
+  
+  }
+ 
+  chatDetails:any = {
+    msg:''
+  };
+
+  sendMessage() {
+    this.chatDetails.reciever = this.selectedUser.id;
+    this.chatDetails.sender = this._id;
+    this._MastersService.sendMessage(this.chatDetails);
+    this.chatDetails.msg = '';
+  }
   
 }

@@ -17,6 +17,10 @@ import { AccordionLinkDirective } from './shared/accordion/accordionlink.directi
 import { AccordionDirective } from './shared/accordion/accordion.directive';
 import { AccordionAnchorDirective } from './shared/accordion/accordionanchor.directive';
 import { NavigationListComponent } from './layout/admin/navigation-list/navigation-list.component';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { environment } from '../environments/environment';
+
+const config: SocketIoConfig = { url: environment.endpoint_url, options: {} };
 
 @NgModule({
   declarations: [
@@ -34,7 +38,8 @@ import { NavigationListComponent } from './layout/admin/navigation-list/navigati
     SharedModule,
     HttpClientModule,
     AgGridModule.withComponents([]),
-    HttpClientJsonpModule
+    HttpClientJsonpModule,
+    SocketIoModule.forRoot(config)
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: HttpInterpritorService, multi: true },CookieService, AccordionLinkDirective, AccordionDirective, AccordionAnchorDirective],
   bootstrap: [AppComponent]

@@ -2,13 +2,111 @@
 @include mat-core();
 
 
+$th-primary: (
+  50: #f44336,
+  100: #f44336,
+  200: #f44336,
+  300: #f44336,
+  400: #f44336,
+  500: #f44336,
+  600: #f44336,
+  700: #f44336,
+  800: #f44336,
+  900: #f44336,
+  A100: #f44336,
+  A200: #f44336,
+  A400: #f44336,
+  A700: #f44336,
+  contrast: (
+    50: white,
+    100: white,
+    200: white,
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: white,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+$th-accent: (
+  50: #03a9f4,
+  100: #03a9f4,
+  200: #03a9f4,
+  300: #03a9f4,
+  400: #03a9f4,
+  500: #03a9f4,
+  600: #03a9f4,
+  700: #03a9f4,
+  800: #03a9f4,
+  900: #03a9f4,
+  A100: #03a9f4,
+  A200: #03a9f4,
+  A400: #03a9f4,
+  A700: #03a9f4,
+  contrast: (
+    50: white,
+    100: white,
+    200: white,
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: white,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+$th-warn: (
+  50: #ff9800,
+  100: #ff9800,
+  200: #ff9800,
+  300: #ff9800,
+  400: #ff9800,
+  500: #ff9800,
+  600: #ff9800,
+  700: #ff9800,
+  800: #ff9800,
+  900: #ff9800,
+  A100: #ff9800,
+  A200: #ff9800,
+  A400: #ff9800,
+  A700: #ff9800,
+  contrast: (
+    50: white,
+    100: white,
+    200: white,
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: white,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
 
 
 
 // AMBER THEME-----------------------------------------
-$amber-primary: mat-palette($mat-amber);
-$amber-accent:  mat-palette($mat-amber, A200, A100, A400);
-$amber-warn: mat-palette($mat-red);
+$amber-primary: mat-palette($th-primary);
+$amber-accent:  mat-palette($th-accent, A200, A100, A400);
+$amber-warn: mat-palette($th-warn);
 $amber-theme: mat-light-theme($amber-primary, $amber-accent, $amber-warn);
 $amber-dark-theme: mat-dark-theme($amber-primary, $amber-accent, $amber-warn);
 $amber-background: map-get($amber-theme, background);

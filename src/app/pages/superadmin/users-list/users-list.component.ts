@@ -76,7 +76,7 @@ export class UsersListComponent implements OnInit {
 
      {
        headerName: "Role", 
-       field: 'role',
+       field: 'role_name',
        filterParams: {
          resetButton: true,
          suppressAndOrCondition: true,

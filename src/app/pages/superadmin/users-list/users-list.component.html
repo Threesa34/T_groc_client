@@ -1,8 +1,8 @@
 <div class="container-fluid">
     <div class="col-12">
-        <button mat-raised-button color="primary" [routerLink]="['/', 'superadmin', 'user_details',0]">Add New</button>&nbsp;
-        <button mat-raised-button *ngIf="selectedRows && selectedRows.length == 1" color="primary" [routerLink]="['/', 'superadmin', 'user_details',userid]">Edit User</button>&nbsp;
-        <button mat-raised-button *ngIf="selectedRows && selectedRows.length >= 1" color="primary" (click)="deleteCompanies()">Delete user(s)</button>
+        <a class="btn btn-primary" [routerLink]="['/', 'superadmin', 'user_details',0]">Add New</a>&nbsp;
+        <a *ngIf="selectedRows && selectedRows.length == 1" class="btn btn-primary" [routerLink]="['/', 'superadmin', 'user_details',userid]">Edit User</a>&nbsp;
+        <a *ngIf="selectedRows && selectedRows.length >= 1" class="btn btn-primary" (click)="deleteCompanies()">Delete user(s)</a>
     </div>
     <div class="col-12 mt-2">
         <ag-grid-angular

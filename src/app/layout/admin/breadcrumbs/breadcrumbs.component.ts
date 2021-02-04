@@ -32,6 +32,7 @@ export class BreadcrumbsComponent implements OnInit {
                 }
 
                 let icon = false;
+                
                 if (routes.snapshot.data.icon !== undefined) {
                   icon = routes.snapshot.data.icon;
                 }

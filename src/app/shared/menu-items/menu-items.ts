@@ -71,91 +71,67 @@ const MENUITEMS_siteadmin = [
         name: 'Dashboard',
         type: 'link',
         icon: 'dashboard',
-	  },
-	  {
-        main_state: 'siteadmin',
-        state: 'employees',
-        name: 'Employees',
-        type: 'link',
-        icon: 'people_alt',
-	  },
-	  {
-        main_state: 'siteadmin',
-        state: 'locations',
-        name: 'Locations',
-        type: 'link',
-        icon: 'location_on',
-	  },
-	  {
-        main_state: 'siteadmin',
-        state: 'manufacturals',
-        name: 'Manufacturals',
-        type: 'link',
-        icon: 'store',
-	  },
-	  {
-        main_state: 'siteadmin',
-        state: 'vendors',
-        name: 'Vendors',
-        type: 'link',
-        icon: 'store',
-	  },
-	  {
-        main_state: 'siteadmin',
-        state: 'catagories',
-        name: 'Catagories',
-        type: 'link',
-        icon: 'category',
-	  },
-	  {
-        main_state: 'siteadmin',
-        state: 'products',
-        name: 'Products',
-        type: 'link',
-        icon: 'list',
-	  },
-	  {
-        main_state: 'siteadmin',
-        state: 'product_units',
-        name: 'Product Units',
-        type: 'link',
-        icon: 'list',
-	  },
-	  {
-        main_state: 'siteadmin',
-        state: 'stok_points',
-        name: 'Stock Points',
-        type: 'link',
-        icon: 'domain',
-	  },
-	  {
-        main_state: 'siteadmin',
-        state: 'offers',
-        name: 'Offers',
-        type: 'link',
-        icon: 'loyalty',
-	  },
-	  {
-        main_state: 'siteadmin',
-        state: 'megapacks',
-        name: 'Mega Packs',
-        type: 'link',
-        icon: 'shopping_basket',
-	  },
-	  {
-        main_state: 'siteadmin',
-        state: 'purchase',
-        name: 'Purchase Order',
-        type: 'link',
-        icon: 'assignment',
-	  },
-	  {
-        main_state: 'siteadmin',
-        state: 'goods_reciept',
-        name: 'Goods Reciept',
-        type: 'link',
-        icon: 'assignment',
-	  },
+    },
+    {
+      state: 'hr',
+      name: 'Human Recource',
+      type: 'sub',
+      icon: 'supervisor_account',
+      children: [
+        {
+          state: 'employee',
+          name: 'Employee',
+        },
+        {
+          state: 'shift_management',
+          name: 'Shift Management'
+        },
+    {
+          state: 'attendance',
+          name: 'Employee Attendance'
+        },
+      {
+          state: 'leaves',
+          name: 'Employee Leaves'
+        },
+      {
+          state: 'loan_payment',
+          name: 'Loan Requests'
+        },
+      {
+          state: 'loan_reciepts',
+          name: 'Loan Reciept'
+        },
+      {
+          state: 'salary_management',
+          name: 'Salary Management'
+        },
+      {
+          state: 'salary_process',
+          name: 'Salary Process'
+        },
+        {
+          state: 'attendance_report',
+          name: 'Employee Attendance Report'
+        },
+      ]
+    },
+    {
+      state: 'campaign',
+      name: 'Advertisements',
+      type: 'sub',
+      icon: 'campaign',
+      children: [
+        {
+          state: 'news_letters',
+          name: 'Advertisements',
+        },
+        {
+          state: 'news_letters_feedback',
+          name: 'Feedback'
+        },
+      ]
+    },
 	  /* {
         main_state: 'siteadmin',
         state: 'goods_reciept',
@@ -174,6 +150,88 @@ const MENUITEMS_siteadmin = [
   },
 
 ];
+
+
+
+const MENUITEMS_hr = [
+  {
+    label: 'Navigation',
+    main: [
+      {
+        main_state: 'hr',
+        state: 'dashboard',
+        name: 'Dashboard',
+        type: 'link',
+        icon: 'dashboard',
+	  },
+	  {
+        main_state: 'hr',
+        state: 'employee',
+        name: 'Employees',
+        type: 'link',
+        icon: 'people_alt',
+	  },
+	  {
+        main_state: 'hr',
+        state: 'attendance',
+        name: 'Employee Attendance',
+        type: 'link',
+        icon: 'alarm',
+	  },
+	  {
+        main_state: 'hr',
+        state: 'shift_management',
+        name: 'Shift Management',
+        type: 'link',
+        icon: 'watch_later',
+	  },
+	  {
+        main_state: 'hr',
+        state: 'leaves',
+        name: 'Employee Leaves',
+        type: 'link',
+        icon: 'beach_access',
+	  },
+	  {
+        main_state: 'hr',
+        state: 'loan_payment',
+        name: 'Loan Requests',
+        type: 'link',
+        icon: 'account_balance',
+	  },
+	  {
+        main_state: 'hr',
+        state: 'loan_reciepts',
+        name: 'Loan Reciept',
+        type: 'link',
+        icon: 'account_balance',
+	  },
+	  {
+        main_state: 'hr',
+        state: 'salary_management',
+        name: 'Salary Management',
+        type: 'link',
+        icon: 'account_balance_wallet',
+	  },
+	  {
+        main_state: 'hr',
+        state: 'salary_process',
+        name: 'Salary Process',
+        type: 'link',
+        icon: 'account_balance_wallet',
+	  },
+	  {
+        main_state: 'hr',
+        state: 'attendance_report',
+        name: 'Employee Attendance Report',
+        type: 'link',
+        icon: 'description',
+	  },
+    ],
+  },
+
+];
+
 
 const MENUITEMS = [
   {
